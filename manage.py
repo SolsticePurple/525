@@ -1,12 +1,8 @@
-from hashlib import new
-import re
-
 import vk_api
 import json
 from vk_api.longpoll import VkLongPoll, VkEventType
-
 import random
-
+import os 
 
 class User:
     def __init__(self, uid):
@@ -144,7 +140,7 @@ def write_msg(user_id, message, key="{}"):
                'random_id': random.randint(0, 2048)})
 
 
-TOKEN = "4e9160d19539775adf37568c7db31e39864bf22f43bfa3d5984d7e8eaf4e00f50a1e7c775a78fab9015fc"
+TOKEN = os.getenv("VK_BOT_TOKEN")
 
 vk = vk_api.VkApi(token=TOKEN)
 vkget = vk.get_api()
